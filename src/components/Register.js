@@ -1,6 +1,7 @@
  import React from 'react';
  import ReactDOM from 'react-dom'
  import useForm from "react-hook-form";
+ import axios from 'axios';
  //import ErrorMessage from "./errorMessage";
 
  const Register = () => {
@@ -13,13 +14,20 @@ clearError,
 formState: { isSubmitting }
      } = useForm();
 
-     const onSubmit = data => {
-         alert(JSON.stringify(data));
-     };
+      const onSubmit = data => {
+        alert(JSON.stringify(data));
+        axios.post('fakeURL.com/users', { data })
+        .then( res => {console.log(res.data)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+      }
+     
 return (
 <form className="App" onSubmit={handleSubmit(onSubmit)}>
 
-<button> Register</button>
+
 <label> First Name: </label>
 <input name ="firstname" ref={register({required:true})} />
 
@@ -30,6 +38,8 @@ return (
 <input type="password" ref={register({required:true})} /> {<br></br>}
  <input type="checkbox" />
 Yes, I'd like to receive emails about app updates and special offers 
+{<br></br>}
+<button> Register</button>
 </form>
   
 )
@@ -37,3 +47,5 @@ Yes, I'd like to receive emails about app updates and special offers
  }
 
  export default Register
+
+ 
