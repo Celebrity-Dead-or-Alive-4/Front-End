@@ -8,12 +8,12 @@ import Login from './components/Login';
 
 function App() {
 
-  const handleLogin = () => {
-
+  const handleLogin = (loginInput) => {
+    props.loginAction(loginInput)
   }
 
-  const handleRegister = () => {
-
+  const handleRegister = (registerInput) => {
+    props.registerAction(registerInput)
   }
 
   return (
