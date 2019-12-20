@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
-import { Route } from 'react-router-dom';
+
 import useForm from 'react-hook-form';
 
 function Login() {
@@ -23,12 +23,12 @@ function Login() {
         <div className="Login-form">
             <form onSubmit={handleSubmit(onSubmit)}>
 
-                <label className="username">Username:</label>
+                <label >Username:</label>
                 <input name="username" ref={register({ required: true, maxLength: 20, validate: validateUserName })} />
                 {errors.username && errors.username.type === "required" && (
                     <p>This is required</p>
                 )}
-                <label className="password">Password:</label>
+                <label >Password:</label>
                 <input name="password" ref={register({ required: true, maxLength: 20, validate: validatePassword })} />
                 {errors.password && errors.password.type === "required" && (
                     <p>This is required</p>
