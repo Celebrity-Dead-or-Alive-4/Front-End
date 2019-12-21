@@ -1,8 +1,10 @@
 .App {
+  
   text-align: center;
 }
 
 .Login-form {
+ display:flex;
   width: 100%;
   margin: auto 100px;
   padding: 32px;
@@ -14,11 +16,13 @@
 
 
 label {
-  display: block;
+
+  display: flex;
   margin-bottom: 20px;
 }
 
 button {
+display: flex;
   max-width: 150px;
   margin: 32px 0;
   padding: 12px 20px;
@@ -30,7 +34,7 @@ button {
   color: #fff;
   cursor: pointer;
   outline: none;
-  -webkit-appearance: none;
+  
 }
 button:disabled {
   opacity: 0.5;
