@@ -1,16 +1,14 @@
 import React from 'react';
-import { Route, BrowserRouter } from 'react-router-dom';
-import Register from './components/Register.js';
+import { Route } from 'react-router-dom';
 import './App.css';
 
+import Login from './components/Login';
 
 function App() {
   return (
     <div className="App">
       <h1>App is running</h1>
-      <BrowserRouter>
-<Route exact path="/register" component={Register}/>
-</BrowserRouter>
+      <Route path="/login" component={Login} />
     </div>
   );
 }
