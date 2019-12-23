@@ -5,8 +5,9 @@ import { loginAction, registerAction } from './utils/actions'
 import './App.css';
 
 import Login from './components/Login';
+import Dashboard from './components/Dashboard';
 
-function App() {
+function App(props) {
 
   const handleLogin = (loginInput) => {
     props.loginAction(loginInput)
@@ -20,6 +21,7 @@ function App() {
     <div className="App">
       <h1>App is running</h1>
       <Route path="/login" component={Login} />
+      <Route path='/dashboard' component={Dashboard} />
     </div>
   );
 }
