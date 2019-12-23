@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
+import { Link } from 'react-router-dom'
+import { UserHeading, DashContainer, HighScore, Button } from './dashStyles'
 
 function Dashboard(props) {
     console.log(props)
-    const [scores, setScores] = useState()
+    const [scores, setScores] = useState([2200, 1500, 500, 12, 256, 11 ])
     const [timer, setTimer] = useState(5)
     useEffect(() => {
         axiosWithAuth().get(`/api/user/${props.match.params.id}`)
@@ -23,16 +25,21 @@ function Dashboard(props) {
         
     }, [timer])
     return(
-        <div>
-            <h1>{props.userInfo.username}</h1>
-            <h3> {timer} </h3>
+        <DashContainer>
+            <UserHeading>{props.userInfo.username}</UserHeading>
+            <h3>Hign Score: <HighScore>4000</HighScore></h3>
             {scores && scores.map((item, index) => {
                 return (
-                    <h2 key={index}> {item.score} </h2>
+                    <p key={index}> {item} </p>
                 )
             })}
+            <div>
+                <Link to='/edituser'>
+                    <Button>Manage Account</Button>
+                </Link>
+            </div>
 
-        </div>
+        </DashContainer>
     )
 }
 
