@@ -6,7 +6,7 @@ import './App.css';
 
 import Login from './components/Login';
 
-function App() {
+function App(props) {
 
   const handleLogin = (loginInput) => {
     props.loginAction(loginInput)
@@ -29,8 +29,8 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-  loginAction : loginAction,
-  registerAction : registerAction
+  loginAction: loginAction,
+  registerAction: registerAction
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
