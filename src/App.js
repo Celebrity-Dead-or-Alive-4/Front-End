@@ -7,6 +7,8 @@ import Register from './components/Register'
 import './App.css';
 
 import Login from './components/Login';
+import Dashboard from './components/Dashboard';
+import EditUser from './components/EditUser';
 
 function App(props) {
 
@@ -22,9 +24,13 @@ function App(props) {
     <div className="App">
       <h1>App is running</h1>
       <Route path="/login" component={Login} />
+
       <Route path="/navigation" component={Navigation} />
       <Route path="/register" component={Register} />
     
+
+      <Route path='/dashboard' component={Dashboard} />
+      <Route path='/edituser' component={EditUser} />
     </div>
   );
 }
