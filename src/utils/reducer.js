@@ -10,7 +10,9 @@ import {
 const initialState = {
     loading : false,
     error: '',
-    userInfo: {}
+    userInfo: {
+        username: 'Chris Adams'
+    }
 }
 
 export function reducer(state = initialState, action) {
