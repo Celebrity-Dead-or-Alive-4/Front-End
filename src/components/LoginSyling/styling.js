@@ -13,7 +13,7 @@ export const LoginCard = styled.div`
 display:flex;
 justify-content:center;
   width: 20rem;
-  margin: auto 100px;
+  margin: auto 50rem;
    padding: 35px; 
   font-weight: bold;
  background: #D1E8E2;
@@ -27,8 +27,8 @@ margin-bottom: 20px;
 
 `
 export const Button = styled.button`
-display: flex;
-button{
+
+
 display: flex;
   max-width: 150px;
   margin: 32px 0;
@@ -42,13 +42,13 @@ display: flex;
   cursor: pointer;
   outline: none;
 
-}
+
 button:disabled {
   opacity: 0.5;
   cursor: not-allowed !important;
 }
 
-button + button {
+ button {
   margin-left: 0.5rem;
 }
 

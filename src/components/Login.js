@@ -33,8 +33,8 @@ function Login() {
                     {errors.password && errors.password.type === "required" && (
                         <p>This is required</p>
                     )}
-                    <Button>
-                        <button type="submit">Log in</button>
+                    <Button class="button">
+                        Log in
                     </Button>
                 </form>
 
