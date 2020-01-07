@@ -7,7 +7,7 @@ import { UserHeading, DashContainer, HighScore, Button } from './dashStyles'
 function Dashboard(props) {
     console.log(props)
     const [scores, setScores] = useState([2200, 1500, 500, 12, 256, 11 ])
-    const [timer, setTimer] = useState(5)
+    const [timer, setTimer] = useState(60)
     useEffect(() => {
         axiosWithAuth().get(`/api/user/${props.match.params.id}`)
         .then(res => {
