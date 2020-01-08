@@ -7,7 +7,7 @@ export function axiosWithAuth() {
         baseURL: 'https://celebrity-dead-or-alive-be.herokuapp.com/api',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `${token}`
+            'authorization': `${token}`
         }
     })
 }
