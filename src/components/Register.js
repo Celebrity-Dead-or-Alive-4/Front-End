@@ -4,6 +4,7 @@
  import * as yup from "yup";
  import React from 'react';
  import styled from 'styled-components';
+ import { axiosWithAuth } from '../utils/axiosWithAuth'
  
  const StyledH3 = styled.h3`
   font-size:.5rem;
@@ -51,6 +52,11 @@ formState: { isSubmitting }
     });
 
       const onSubmit = data => {
+        axiosWithAuth().post('/auth/register', data)
+          .then(res => {
+            console.log(res)
+          })
+          .catch(err => console.log(err))
         alert(JSON.stringify(data));
       }
       // axios.post('fakeURL.com/users', {data})

@@ -4,10 +4,10 @@ export function axiosWithAuth() {
     const token = localStorage.getItem('token')
 
     return axios.create({
-        baseURL: 'https://reqres.in',
+        baseURL: 'https://celebrity-dead-or-alive-be.herokuapp.com/api',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `${token}`
+            'authorization': `${token}`
         }
     })
 }

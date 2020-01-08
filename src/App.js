@@ -9,6 +9,7 @@ import './App.css';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import EditUser from './components/EditUser';
+import { TestRegister } from './components/TestRegister'
 
 function App(props) {
 
@@ -31,6 +32,7 @@ function App(props) {
 
       <Route path='/dashboard' component={Dashboard} />
       <Route path='/edituser' component={EditUser} />
+      <Route path='/test-register' component={TestRegister} />
     </div>
   );
 }
