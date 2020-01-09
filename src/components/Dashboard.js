@@ -3,42 +3,64 @@ import { connect } from 'react-redux'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 import { Link } from 'react-router-dom'
 import { UserHeading, DashContainer, HighScore, Button } from './dashStyles'
+import { useSelector } from 'react-redux'
+import EditUser from './EditUser'
 
 function Dashboard(props) {
     console.log(props)
     const [scores, setScores] = useState([2200, 1500, 500, 12, 256, 11 ])
-    const [timer, setTimer] = useState(60)
-    useEffect(() => {
-        axiosWithAuth().get(`/api/user/${props.match.params.id}`)
-        .then(res => {
-            console.log(res)
-            setScores(res.data.scores)
-        })
-        .catch(err => console.log(err))
-    }, [])
+    const [editUser, setEditUser] = useState(false)
+    const state = useSelector(state => state)
+    console.log(state)
+    
+    const manageAccount = (e) => {
+        e.preventDefault()
+        setEditUser(true)
+    }
 
-    useEffect(() => {
-        timer > 0 &&
-        setTimeout(() => {
-            setTimer(timer - 1)
-        }, 1000)
-        
-    }, [timer])
+    const handleSubmit = () => {
+
+    }
+    
+    const handleDelete = () => {
+
+    }
+
     return(
         <DashContainer>
-            <UserHeading>{props.userInfo.username}</UserHeading>
-            <h3>Hign Score: <HighScore>4000</HighScore></h3>
-            {scores && scores.map((item, index) => {
-                return (
-                    <p key={index}> {item} </p>
-                )
-            })}
+            {!editUser &&
             <div>
-                <Link to='/edituser'>
-                    <Button>Manage Account</Button>
-                </Link>
+                <UserHeading>{state.userInfo.message}</UserHeading>
+                <h3>Hign Score: <HighScore>4000</HighScore></h3>
+                {scores && scores.map((item, index) => {
+                    return (
+                        <p key={index}> {item} </p>
+                    )
+                })}
+                <div>
+                    <Button onClick={manageAccount}>Manage Account</Button>
+                </div>
             </div>
-
+             }
+             {editUser && 
+                <form>
+                    <UserHeading> {state.userInfo.message} </UserHeading>
+                    <p>Edit account name and email address</p>
+                    <div>
+                    <input 
+                        placeholder='Name'
+                    />
+                    </div>
+                    <div>
+                    <input 
+                        placeholder='Email'
+                    />
+                    </div>
+                    <Button onClick={handleSubmit}>Submit Changes</Button>
+                    <Button onClick={handleDelete} style={{backgroundColor: 'red'}}>Delete Account</Button>
+                </form>
+             }
+            
         </DashContainer>
     )
 }

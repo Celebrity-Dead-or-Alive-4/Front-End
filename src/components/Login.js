@@ -1,49 +1,64 @@
 import React, { useEffect } from 'react';
+
+import {axiosWithAuth} from '../utils/axiosWithAuth'
+import * as yup from 'yup'
+import { useDispatch } from 'react-redux'
+import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE } from '../utils/actions'
+
 import useForm from 'react-hook-form';
 import { LoginCard } from './LoginSyling/styling';
 import { Button } from './LoginSyling/styling';
 
 
 
-function Login() {
-    const { register, handleSubmit, errors, } = useForm()
-    const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-    const onSubmit = data => console.log(data)
 
-    const validateUserName = async value => {
-        await sleep(1000);
-        if (value === "username") return true;
-        return false;
+const schema = yup.object().shape({
+    username: yup.string().required('Username is required'),
+    password: yup.string().required('password is required'),    
+})
+
+function Login(props) {
+    const { register, handleSubmit, errors, getValues } = useForm({
+        validationSchema: schema
+    })
+   
+    const dispatch = useDispatch()
+
+    const onSubmit = () => {
+        const values = getValues()
+        dispatch({type: LOGIN_START})
+        console.log(values)
+        axiosWithAuth().post('/auth/login', values)
+            .then(res => {
+                console.log(res)
+                localStorage.setItem('token', res.data.token)
+                dispatch({type: LOGIN_SUCCESS, payload: res.data})
+                props.history.push('/dashboard')
+            })
+            .catch(err => dispatch({type: LOGIN_FAILURE, payload: err}))
+
     }
-    const validatePassword = async value => {
-        await sleep(1000);
-        if (value === "password") return true;
-        return false;
-    }
+
+   
 
     return (
+
         <LoginCard>
-            <div className="Login-form">
-                <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="Login-form">
+            <form onSubmit={handleSubmit(onSubmit)}>
 
-                    <label >Username:</label>
-                    <input name="username" placeholder="username" ref={register({ required: true, maxLength: 20, validate: validateUserName })} />
-                    {errors.username && errors.username.type === "required" && (
-                        <p>This is required</p>
-                    )}
-                    <label >Password:</label>
-                    <input name="password" placeholder="password" ref={register({ required: true, maxLength: 20, validate: validatePassword })} />
-                    {errors.password && errors.password.type === "required" && (
-                        <p>This is required</p>
-                    )}
-                    <Button class="button">
-                        Log in
-                    </Button>
-                </form>
-
-            </div>
-
+                <label >Username:</label>
+                <input name="username" ref={register({ required: true, maxLength: 20 })} />
+                {errors.username && <p> {errors.username.message} </p>}
+                <label >Password:</label>
+                <input name="password" ref={register({ required: true, maxLength: 20})} />
+                {errors.password && <p> {errors.password.message} </p>}
+                <Button type="submit" class="button">Log in</Button>
+            </form>
+        </div>
         </LoginCard>
+
+
     )
 
 
