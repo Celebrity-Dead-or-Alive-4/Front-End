@@ -36,7 +36,7 @@ export function reducer(state = initialState, action) {
         case REGISTER_START :
             return {
                 ...state,
-                laoding: true
+                loading: true
             }
         case REGISTER_SUCCESS :
             return {
