@@ -11,7 +11,7 @@ import Dashboard from './components/Dashboard';
 import EditUser from './components/EditUser';
 
 import Quiz from './components/Quiz';
-
+import { LandingPage } from './components/LandingPage'
 import { TestLogin } from './components/TestLogin'
 import { TestRegister } from './components/TestRegister'
 import { ProtectedRoute } from './utils/ProtectedRoute'
@@ -25,7 +25,7 @@ function App(props) {
     <div className="App">
       <h1 className="heading">Celebrity Dead or Alive Quiz</h1>
       <Navigation />
-  
+      <LandingPage />
       <Route path="/login" component={Login} />
       <Route path="/register" component={Register} />
 

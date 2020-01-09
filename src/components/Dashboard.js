@@ -29,7 +29,7 @@ function Dashboard(props) {
         axiosWithAuth().put(`user/${id}`, form )
             .then(res => {
                 console.log(res)
-                props.history.push('/dashboard')
+                setEditUser(false)
             })
             .catch(err => console.log(err))
     }
@@ -39,6 +39,7 @@ function Dashboard(props) {
         axiosWithAuth().delete(`user/${id}`)
             .then(res => {
                 console.log(res)
+                localStorage.setItem('token', null)
                 props.history.push('/')
             })
             .catch(err => console.log(err))

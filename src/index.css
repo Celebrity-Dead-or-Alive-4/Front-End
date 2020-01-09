@@ -24,3 +24,40 @@ font-family: 'Modak',cursive;
 color:white;
 
 }
+.landing-container {
+  width: 50%;
+  background-color: #D1E8E2;
+  display: flex;
+  flex-direction: column;
+  margin-top: 100px;
+  box-shadow: 2px 2px 5px black;
+  border-radius: 1rem;
+  padding: 50px;
+}
+.landing-image{
+  border-radius: .5rem;
+  box-shadow: 2px 2px 2px black;
+  max-width: 250px;
+}
+.landingcard {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+}
+.landingbutton-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.landing-button{
+  width: 100%;
+  background-color: #D9B08C;
+  padding: 10px 20px;
+  border-radius: .5rem;
+  box-shadow: 1px 1px 2px black;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-shadow: 1px 1px 3px grey;
+}
