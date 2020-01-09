@@ -8,22 +8,40 @@ import EditUser from './EditUser'
 
 function Dashboard(props) {
     console.log(props)
+    const [form, setForm] = useState({
+        name: '',
+        email: ''
+
+    })
     const [scores, setScores] = useState([2200, 1500, 500, 12, 256, 11 ])
     const [editUser, setEditUser] = useState(false)
     const state = useSelector(state => state)
     console.log(state)
-    
+    const id = state.userInfo.userId
+
     const manageAccount = (e) => {
         e.preventDefault()
         setEditUser(true)
     }
 
-    const handleSubmit = () => {
-
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        axiosWithAuth().put(`user/${id}`, form )
+            .then(res => {
+                console.log(res)
+                props.history.push('/dashboard')
+            })
+            .catch(err => console.log(err))
     }
     
-    const handleDelete = () => {
-
+    const handleDelete = (e) => {
+        e.preventDefault()
+        axiosWithAuth().delete(`user/${id}`)
+            .then(res => {
+                console.log(res)
+                props.history.push('/')
+            })
+            .catch(err => console.log(err))
     }
 
     return(
@@ -48,12 +66,28 @@ function Dashboard(props) {
                     <p>Edit account name and email address</p>
                     <div>
                     <input 
+                        name='name'
                         placeholder='Name'
+                        value={form.name}
+                        onChange={(e)=>{
+                            setForm({
+                                ...form,
+                                [e.target.name]:e.target.value
+                            })
+                        }}
                     />
                     </div>
                     <div>
                     <input 
+                        name='email'
                         placeholder='Email'
+                        value={form.email}
+                        onChange={(e)=>{
+                            setForm({
+                                ...form,
+                                [e.target.name]:e.target.value
+                            })
+                        }}
                     />
                     </div>
                     <Button onClick={handleSubmit}>Submit Changes</Button>
