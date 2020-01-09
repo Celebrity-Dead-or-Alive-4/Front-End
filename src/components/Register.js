@@ -72,7 +72,7 @@ return (
 <form className="App" onSubmit={handleSubmit(onSubmit)}>
 
 
-<StyledLabel> First Name: </StyledLabel>
+<StyledLabel> User Name: </StyledLabel>
 <StyledInput type="text" name ="firstName" ref={register({required:true})} />
 <StyledLabel > Email </StyledLabel>
 
@@ -80,7 +80,11 @@ return (
 
 <StyledLabel> Password</StyledLabel>
 <StyledInput type="text"  name="password" ref={register({required:true})} /> {<br></br>}
+<StyledLabel> Name </StyledLabel>
+<StyledInput type="text" name="name" ref={register({required:true})} /> 
+
 <div><StyledH3> Yes, I'd like to receive emails about app updates and special offers </StyledH3>
+
  <input type="checkbox" /> </div>
 
  <Button> Register</Button>
