@@ -8,18 +8,18 @@
  
  const StyledH3 = styled.h3`
   font-size:.5rem;
-`;
+`
 const Button = styled.button`
-cursor:pointer;
-background:#116466;
-width:300px;
-border-radius:5%
-display:inline-block;
-box-sizing:border-box;
-`;
+  cursor:pointer;
+  background:#116466;
+  width:300px;
+  border-radius:5%;
+  display:inline-block;
+  box-sizing:border-box;
+`
 const StyledInput = styled.input` 
-border-radius:5%
-width:50%;`;
+border-radius:5%;
+width:50%;`
 
 const StyledLabel = styled.label`
 color:#116466;
