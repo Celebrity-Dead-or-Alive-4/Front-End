@@ -1,13 +1,17 @@
 import React from 'react';
-import { Link, NavLink }  from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import "../App.css";
 import styled from 'styled-components';
+
 const StyledDiv = styled.div`
+display:flex;
+text-align:center
+justify-content:space-between;
 background:#D9b08C;
-width:50%;
+width:8%;
 height:100%;
 margin: 0 auto;
-padding:10px 15px;
+padding:8px 15px;
 `
 const StyledSpan = styled.span`
 color:#D1E8E2;
@@ -17,22 +21,29 @@ font-weight:300;
 padding:0 25px;
 
 `
+const NavSection = styled.div`
+display:flex;
+
+`
 
 const Navigation = () => {
   return (
     <div>
+
       <div className="App">
-        <h1>Celebrity Dead or Alive</h1>
-        <StyledDiv>
-        <NavLink  exact className="navlinks" to="/"> <StyledSpan >Login </StyledSpan> </NavLink >
-        
-        
-          <NavLink exact className="navlinks"   to="/About"> <StyledSpan >Quiz </StyledSpan></NavLink >
-        
-        
-          <NavLink exact className="navlinks"  to="/Contact"> <StyledSpan  >Register </StyledSpan> </NavLink >
+        <NavSection>
+          <StyledDiv>
+            <NavLink exact className="navlinks" to="/Login"> <StyledSpan >Login </StyledSpan> </NavLink >
           </StyledDiv>
+          <StyledDiv>
+            <NavLink exact className="navlinks" to="/Quiz"> <StyledSpan >Quiz </StyledSpan></NavLink >
+          </StyledDiv>
+          <StyledDiv>
+            <NavLink exact className="navlinks" to="/Register"> <StyledSpan  >Register </StyledSpan> </NavLink >
+          </StyledDiv>
+        </NavSection>
       </div>
+
     </div>
   );
 };
