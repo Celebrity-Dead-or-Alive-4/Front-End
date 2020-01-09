@@ -24,9 +24,8 @@ function App(props) {
   return (
     <div className="App">
       <h1 className="heading">Celebrity Dead or Alive Quiz</h1>
-
-
       <Navigation />
+  
       <Route path="/login" component={Login} />
       <Route path="/register" component={Register} />
 
@@ -38,6 +37,9 @@ function App(props) {
 
       <Route path='/test-register' component={TestRegister} />
       <ProtectedRoute path='/dashboard' component={Dashboard} />
+    
+      
+      
 
     </div>
   );

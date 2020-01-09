@@ -3,7 +3,9 @@ import styled from 'styled-components'
 
 export const CelebCard = styled.div`
 display:flex;
+flex-direction: column;
 justify-content:center;
+align-items: center;
   width: 40%;
   margin: 5rem  30%;
    padding: 35px; 

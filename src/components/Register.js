@@ -40,7 +40,7 @@ font-weight:100;
 })
 
 
- const Register = () => {
+ const Register = (props) => {
    
      const {
 register,
@@ -57,6 +57,7 @@ formState: { isSubmitting }
         axiosWithAuth().post('/auth/register', data)
           .then(res => {
             console.log(res)
+            props.history.push('/login')
           })
           .catch(err => console.log(err))
         alert(JSON.stringify(data));

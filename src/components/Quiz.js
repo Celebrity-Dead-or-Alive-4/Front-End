@@ -26,13 +26,13 @@ export default function QuizList() {
 
 
     return (
-        <section className='celeb-list' >
-            <h2>
+        <div style={{width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+            
                 {celebs.map((celeb, index) => (
                     <CelebrityCard key={index} celeb={celeb} />
                 ))}
-            </h2>
-        </section>
+           
+        </div>
 
 
     );
@@ -43,19 +43,18 @@ function CelebrityCard({ celeb }) {
 
     return (
 
-        <div className='celeb-card'>
+        
             <CelebCard>
                 <Name>
                     <h2>Name: {name}</h2>
                 </Name>
-                <div className='button-section'>
+                <div style={{display: 'flex', alignItems: 'space-between'}}>
                     <Button>Alive</Button>
                     <h1>or</h1>
                     <Button>Dead</Button>
                 </div>
             </CelebCard>
 
-        </div >
 
     )
 
