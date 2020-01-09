@@ -33,9 +33,11 @@ font-weight:100;
 
  
  const schema = yup.object().shape({
-  firstName: yup.string().required(),
-  password: yup.string().required(),
-});
+  Username: yup.string().required('username is required'),
+  Password: yup.string().required('password is required'),
+  Email:yup.string().email('invalid email').required('email is required'),
+  Name: yup.string.required('name is required')
+})
 
 
  const Register = () => {
