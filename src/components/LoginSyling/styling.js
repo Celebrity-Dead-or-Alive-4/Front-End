@@ -13,7 +13,7 @@ export const LoginCard = styled.div`
 display:flex;
 justify-content:center;
   width: 20rem;
-  margin: auto 50rem;
+  margin: 5rem  40%;
    padding: 35px; 
   font-weight: bold;
  background: #D1E8E2;

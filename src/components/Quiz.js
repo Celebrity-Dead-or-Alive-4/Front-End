@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react ';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
+import { Button } from './LoginSyling/styling';
+import { CelebCard } from './QuizSyling/quizCard';
+import { Name } from './QuizSyling/quizCard';
 
 export default function QuizList() {
     const [celebs, setCelebs] = useState([]);
@@ -9,22 +11,25 @@ export default function QuizList() {
     useEffect(() => {
         const getCelebrity = () => {
             axios
-                .get('celeb api')
+                .get('https://celebrity-dead-or-alive-data.herokuapp.com/all')
                 .then(res => {
                     console.log(res);
-                    setCelebs(res)
+                    setCelebs(res.data.data)
                 })
                 .catch(err => {
-                    console.log('Server Error', error);
+                    console.log('Server Error', err);
                 })
         }
         getCelebrity();
     }, []);
+
+
+
     return (
-        <section className='celeb-list'>
+        <section className='celeb-list' >
             <h2>
-                {celebs.map(celeb => (
-                    <CelebrityCard />
+                {celebs.map((celeb, index) => (
+                    <CelebrityCard key={index} celeb={celeb} />
                 ))}
             </h2>
         </section>
@@ -33,16 +38,25 @@ export default function QuizList() {
     );
 }
 
-function CelebrityCard() {
-    const { name, deathyear, image } = celebrity;
+function CelebrityCard({ celeb }) {
+    const { name } = celeb;
 
     return (
-        <div className='celeb-card'>
-            <h2>{name}</h2>
-            <imag src={image} />
-            <div className='celeb-status'>{deathyear}</div>
 
-        </div>
+        <div className='celeb-card'>
+            <CelebCard>
+                <Name>
+                    <h2>Name: {name}</h2>
+                </Name>
+                <div className='button-section'>
+                    <Button>Alive</Button>
+                    <h1>or</h1>
+                    <Button>Dead</Button>
+                </div>
+            </CelebCard>
+
+        </div >
+
     )
 
 

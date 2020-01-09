@@ -9,7 +9,7 @@ import './App.css';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import EditUser from './components/EditUser';
-
+import Quiz from './components/Quiz';
 function App(props) {
 
   const handleLogin = (loginInput) => {
@@ -22,15 +22,17 @@ function App(props) {
 
   return (
     <div className="App">
-      <h1>App is running</h1>
-      <Route path="/login" component={Login} />
+      <h1 className="heading">Celebrity Dead or Alive Quiz</h1>
 
-      <Route path="/navigation" component={Navigation} />
+
+      <Navigation />
+      <Route path="/login" component={Login} />
       <Route path="/register" component={Register} />
-    
+
 
       <Route path='/dashboard' component={Dashboard} />
       <Route path='/edituser' component={EditUser} />
+      <Route path='/quiz' component={Quiz} />
     </div>
   );
 }
