@@ -25,7 +25,8 @@ function App(props) {
     <div className="App">
       <h1 className="heading">Celebrity Dead or Alive Quiz</h1>
       <Navigation />
-      <LandingPage />
+      <Route exact path='/' component={LandingPage} />
+     
       <Route path="/login" component={Login} />
       <Route path="/register" component={Register} />
 

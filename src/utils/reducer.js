@@ -4,15 +4,17 @@ import {
     LOGIN_FAILURE,
     REGISTER_START,
     REGISTER_SUCCESS,
-    REGISTER_FAILURE
+    REGISTER_FAILURE,
+    ADD_SCORE
 } from './actions'
 
 const initialState = {
     loading : false,
     error: '',
     userInfo: {
-        username: 'Chris Adams'
-    }
+        username: 'Chris Adams'   
+    },
+    scores:[]
 }
 
 export function reducer(state = initialState, action) {
@@ -49,6 +51,11 @@ export function reducer(state = initialState, action) {
                 ...state,
                 error: action.payload
             } 
+        case ADD_SCORE :
+            return {
+                ...state,
+                scores: [...state.scores, action.payload]
+            }
         default:
             return state
     }

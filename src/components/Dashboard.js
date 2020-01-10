@@ -13,11 +13,13 @@ function Dashboard(props) {
         email: ''
 
     })
-    const [scores, setScores] = useState([2200, 1500, 500, 12, 256, 11 ])
+    // const [scores, setScores] = useState([2200, 1500, 500, 12, 256, 11 ])
     const [editUser, setEditUser] = useState(false)
     const state = useSelector(state => state)
     console.log(state)
     const id = state.userInfo.userId
+    state.scores.sort(function(a, b){return b-a})
+    
 
     const manageAccount = (e) => {
         e.preventDefault()
@@ -50,8 +52,8 @@ function Dashboard(props) {
             {!editUser &&
             <div>
                 <UserHeading>{state.userInfo.message}</UserHeading>
-                <h3>Hign Score: <HighScore>4000</HighScore></h3>
-                {scores && scores.map((item, index) => {
+                <h3>Hign Score: <HighScore> {state.scores[0]} </HighScore></h3>
+                {state.scores && state.scores.map((item, index) => {
                     return (
                         <p key={index}> {item} </p>
                     )

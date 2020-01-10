@@ -41,12 +41,12 @@ const Navigation = () => {
     
         <NavSection>
         
-            <StyledDiv  to="/Login">Login</StyledDiv >
+            <StyledDiv  to="/login">Login</StyledDiv >
         
           
-            <StyledDiv  to="/Quiz">Quiz</StyledDiv >
+            <StyledDiv  to="/quiz">Quiz</StyledDiv >
          
-            <StyledDiv  to="/Register">Register</StyledDiv >
+            <StyledDiv  to="/register">Register</StyledDiv >
          
         </NavSection>
         )
