@@ -8,22 +8,43 @@ import EditUser from './EditUser'
 
 function Dashboard(props) {
     console.log(props)
-    const [scores, setScores] = useState([2200, 1500, 500, 12, 256, 11 ])
+    const [form, setForm] = useState({
+        name: '',
+        email: ''
+
+    })
+    // const [scores, setScores] = useState([2200, 1500, 500, 12, 256, 11 ])
     const [editUser, setEditUser] = useState(false)
     const state = useSelector(state => state)
     console.log(state)
+    const id = state.userInfo.userId
+    state.scores.sort(function(a, b){return b-a})
     
+
     const manageAccount = (e) => {
         e.preventDefault()
         setEditUser(true)
     }
 
-    const handleSubmit = () => {
-
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        axiosWithAuth().put(`user/${id}`, form )
+            .then(res => {
+                console.log(res)
+                setEditUser(false)
+            })
+            .catch(err => console.log(err))
     }
     
-    const handleDelete = () => {
-
+    const handleDelete = (e) => {
+        e.preventDefault()
+        axiosWithAuth().delete(`user/${id}`)
+            .then(res => {
+                console.log(res)
+                localStorage.setItem('token', null)
+                props.history.push('/')
+            })
+            .catch(err => console.log(err))
     }
 
     return(
@@ -31,8 +52,8 @@ function Dashboard(props) {
             {!editUser &&
             <div>
                 <UserHeading>{state.userInfo.message}</UserHeading>
-                <h3>Hign Score: <HighScore>4000</HighScore></h3>
-                {scores && scores.map((item, index) => {
+                <h3>Hign Score: <HighScore> {state.scores[0]} </HighScore></h3>
+                {state.scores && state.scores.map((item, index) => {
                     return (
                         <p key={index}> {item} </p>
                     )
@@ -48,12 +69,28 @@ function Dashboard(props) {
                     <p>Edit account name and email address</p>
                     <div>
                     <input 
+                        name='name'
                         placeholder='Name'
+                        value={form.name}
+                        onChange={(e)=>{
+                            setForm({
+                                ...form,
+                                [e.target.name]:e.target.value
+                            })
+                        }}
                     />
                     </div>
                     <div>
                     <input 
+                        name='email'
                         placeholder='Email'
+                        value={form.email}
+                        onChange={(e)=>{
+                            setForm({
+                                ...form,
+                                [e.target.name]:e.target.value
+                            })
+                        }}
                     />
                     </div>
                     <Button onClick={handleSubmit}>Submit Changes</Button>

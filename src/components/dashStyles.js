@@ -14,7 +14,6 @@ export const DashContainer = styled.div `
     background-color: #d1e8e2;
     margin-top: 50px;
     border-radius: 1.5rem;
-    box-shadow: 3px 3px 3px black;
 ` 
 export const HighScore = styled.span `
     font-size: 2rem;

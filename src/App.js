@@ -11,7 +11,7 @@ import Dashboard from './components/Dashboard';
 import EditUser from './components/EditUser';
 
 import Quiz from './components/Quiz';
-
+import { LandingPage } from './components/LandingPage'
 import { TestLogin } from './components/TestLogin'
 import { TestRegister } from './components/TestRegister'
 import { ProtectedRoute } from './utils/ProtectedRoute'
@@ -24,9 +24,9 @@ function App(props) {
   return (
     <div className="App">
       <h1 className="heading">Celebrity Dead or Alive Quiz</h1>
-
-
       <Navigation />
+      <Route exact path='/' component={LandingPage} />
+     
       <Route path="/login" component={Login} />
       <Route path="/register" component={Register} />
 
@@ -38,6 +38,9 @@ function App(props) {
 
       <Route path='/test-register' component={TestRegister} />
       <ProtectedRoute path='/dashboard' component={Dashboard} />
+    
+      
+      
 
     </div>
   );
