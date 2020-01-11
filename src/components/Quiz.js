@@ -36,41 +36,47 @@ export default function QuizList(props) {
             }, 1000)
     }, [timer, start])
     useEffect(() => {
-        if(questionCount === 10) {
+        if (questionCount === 10) {
             setSubmit(true)
             setTotalScore(totalScore + timer)
         }
     }, [questionCount])
-    
+
     const scoring = (index, ans) => {
         setQuestionCount(questionCount + 1)
-        if(celebs[index].died && ans === true){
+        if (celebs[index].died && ans === true) {
             setTotalScore(totalScore + 10)
-        }else if(!celebs[index].died && ans === false){
+        } else if (!celebs[index].died && ans === false) {
             setTotalScore(totalScore + 10)
         }
     }
     const submitScore = () => {
         console.log(totalScore)
-        dispatch({type: ADD_SCORE, payload: totalScore})
+        dispatch({ type: ADD_SCORE, payload: totalScore })
         props.history.push('/dashboard')
     }
-    
-  
+
+
 
     return (
-        <div style={{width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-            
-            {start && !submit && <h2> {timer} </h2>}
+        <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', boder: '1px solid red' }}>
+
+            {start && !submit && <h2 style={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                boder: '1px solid red'
+            }}> {timer} </h2>}
             {submit && <h2> Total Score: {totalScore} </h2>}
             {start && !submit &&
                 celebs.map((celeb, index) => (
                     <CelebrityCard key={index} celeb={celeb} scoring={scoring} position={index} />
-            )) }
-            {!submit && !start && 
+                ))}
+            {!submit && !start &&
                 <Button style={{
                     width: '90%',
-                    justifyContent:'center',
+                    justifyContent: 'center',
                     marginTop: '100px',
                     boxShadow: '2px 2px 2px black'
                 }} onClick={(e) => {
@@ -81,7 +87,7 @@ export default function QuizList(props) {
             {submit &&
                 <Button style={{
                     width: '90%',
-                    justifyContent:'center',
+                    justifyContent: 'center',
                     marginTop: '100px',
                     boxShadow: '2px 2px 2px black'
                 }} onClick={(e) => {
@@ -90,7 +96,7 @@ export default function QuizList(props) {
                     submitScore()
                 }}>Submit Score</Button>
             }
-           
+
         </div>
 
 
@@ -99,26 +105,30 @@ export default function QuizList(props) {
 
 function CelebrityCard({ celeb, scoring, position }) {
     const { name } = celeb;
- 
+
     return (
 
-        
-            <CelebCard>
+
+        <CelebCard>
+            <div style={{ width: '60%' }}>
                 <Name>
-                    <h2>Name: {name}</h2>
+                    Name: {name}
                 </Name>
-                <div style={{display: 'flex', alignItems: 'space-between'}}>
+                <div style={{ display: 'flex', alignItems: 'space-between', justifyContent: 'space-between', }}>
                     <Button onClick={(e) => {
                         e.preventDefault()
                         scoring(position, false)
                     }}>Alive</Button>
-                    <h1>or</h1>
+
+                    <h2 style={{ margin: '20%' }}> or</h2>
+
                     <Button onClick={(e) => {
-                         e.preventDefault()
-                         scoring(position, true)
+                        e.preventDefault()
+                        scoring(position, true)
                     }}>Dead</Button>
                 </div>
-            </CelebCard>
+            </div>
+        </CelebCard>
 
 
     )

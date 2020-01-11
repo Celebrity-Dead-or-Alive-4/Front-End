@@ -7,7 +7,7 @@ flex-direction: column;
 justify-content:center;
 align-items: center;
   width: 40%;
-  margin: 5rem  30%;
+  margin: 3rem  30%;
    padding: 35px; 
   font-weight: bold;
  background: #D1E8E2;
@@ -19,7 +19,6 @@ align-items: center;
 export const Name = styled.div`
 
 display: flex;
-margin-right:20%;
-
+size: 5rem;
 
 `
