@@ -6,5 +6,13 @@ this project is a fun little mini game that test the players knowlage of if a ce
 
 
 
+### Motivation 
+to make a fun little mini game to test the knolage of the player 
+
+
+
+
+
+
 
 
