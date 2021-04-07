@@ -22,6 +22,7 @@ this project was built using
 
 - React 
 - redux
+- yup
 
 
 
