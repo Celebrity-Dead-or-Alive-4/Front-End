@@ -21,8 +21,8 @@ this project was built using
 
 
 - React 
-- yup 
-- formink 
+- redux
+
 
 
 
