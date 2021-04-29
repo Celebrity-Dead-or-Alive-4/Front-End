@@ -2,12 +2,12 @@
 
 ### Project
 
-this project is a fun little mini game that test the players knowlage of if a celeberitie is dead or alive.
+This project is a fun little mini game that test the players knowlage of if a celeberitie is dead or alive.
 
 
 
 ### Motivation 
-to make a fun little mini game to test the knolage of the player 
+To make a fun little mini game to test the knowlage of the player 
 
 
 
