@@ -7,7 +7,7 @@ This project is a fun little mini game that test the players knowlage of if a ce
 
 
 ### Motivation 
-To make a fun little mini game to test the knowlage of the player 
+To make a fun little mini game to test the knowlage of the player.
 
 
 
@@ -17,9 +17,9 @@ To make a fun little mini game to test the knowlage of the player
 
 ### Built with 
 
-this project was built using 
+This project was built using 
 
-
+- CSS
 - React 
 - redux
 - yup
