@@ -11,7 +11,7 @@ To make a fun little mini game to test the knowlage of the player.
 
 
 
-### Example/Screenshots
+### Example/Screenshot
 
 ![Screenshot (8)](https://user-images.githubusercontent.com/52684059/113808266-89191b80-971a-11eb-8d6c-07a9daa972d7.png)
 
